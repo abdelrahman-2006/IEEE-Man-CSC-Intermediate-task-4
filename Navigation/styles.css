@@ -1,0 +1,76 @@
+:root {
+    --bg-clr:#112232;
+    --nav-clr:#475b72;
+    --font-clr:#f8ffff;
+}
+body {
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    background-color: var(--bg-clr);
+    min-height: 100svh;
+    color: var(--font-clr);
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+nav {
+    background-color: var(--nav-clr);
+    padding-top: 3rem;
+    padding-left: 5rem;
+}
+
+main {
+    padding: 5rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+nav li.active {
+    view-transition-name: activeNavTab; 
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+    padding-left: 2rem;
+    border-radius: 100vw 0 0 100vw;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: var(--font-clr);
+    font-size: 2rem;
+}
+
+.active {
+    background-color: var(--bg-clr);
+}
+
+nav ul li.active::after,
+nav ul li.active::before {
+    --radius: 2rem;
+    content: "";
+    width: var(--radius);
+    height: var(--radius);
+    display: block;
+    position: absolute;
+    right: 0;
+    background-color: var(--nav-clr);
+}
+
+nav ul li.active::before {
+    top:calc(var(--radius) * -1);
+    box-shadow: 10px 10px 0 10px var(--bg-clr);
+    border-radius: 0 0 100vw 0;
+}
+
+nav ul li.active::after  {
+    bottom: calc(var(--radius) * -1);
+    box-shadow: 10px -10px 0 10px var(--bg-clr);
+    border-radius: 0  100vw 0 0;
+}

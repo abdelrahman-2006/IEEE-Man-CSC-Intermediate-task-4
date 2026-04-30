@@ -1,9 +1,12 @@
+@view-transition {
+    navigation: auto;
+}
 :root {
     --bg-clr:#112232;
     --nav-clr:#475b72;
     --font-clr:#f8ffff;
 }
-body {
+body, html {
     display: grid;
     grid-template-columns: 20rem 1fr;
     background-color: var(--bg-clr);
@@ -28,9 +31,6 @@ ul {
     flex-direction: column;
     gap: 5rem;
 }
-nav li.active {
-    view-transition-name: activeNavTab; 
-}
 
 li {
     list-style: none;
@@ -45,11 +45,20 @@ a {
     text-decoration: none;
     color: var(--font-clr);
     font-size: 2rem;
+    display: block;
+    z-index: 100;
 }
 
 .active {
     background-color: var(--bg-clr);
+    view-transition-name: activeNavTab; 
 }
+
+nav li:nth-child(1) a { view-transition-name: nav-home; }
+nav li:nth-child(2) a { view-transition-name: nav-about; }
+nav li:nth-child(3) a { view-transition-name: nav-blog; }
+nav li:nth-child(4) a { view-transition-name: nav-another; }
+nav li:nth-child(5) a { view-transition-name: nav-page; }
 
 nav ul li.active::after,
 nav ul li.active::before {
